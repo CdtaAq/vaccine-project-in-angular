@@ -1,0 +1,32 @@
+{
+"name": "frontend-angular",
+"version": "1.0.0",
+"scripts": {
+"start": "ng serve --open",
+"build": "ng build",
+"test": "ng test"
+},
+"private": true,
+"dependencies": {
+"@angular/animations": "16.2.0",
+"@angular/common": "16.2.0",
+"@angular/compiler": "16.2.0",
+"@angular/core": "16.2.0",
+"@angular/forms": "16.2.0",
+"@angular/platform-browser": "16.2.0",
+"@angular/platform-browser-dynamic": "16.2.0",
+"@angular/router": "16.2.0",
+"rxjs": "7.8.1",
+"tslib": "2.6.2",
+"zone.js": "0.13.0",
+"socket.io-client": "4.7.2",
+"ngx-qrcode2": "^9.0.0",
+"d3": "7.9.0"
+},
+"devDependencies": {
+"@angular-devkit/build-angular": "16.2.3",
+"@angular/cli": "16.2.3",
+"@angular/compiler-cli": "16.2.0",
+"typescript": "5.1.6"
+}
+}
