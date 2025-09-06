@@ -1,0 +1,18 @@
+<h2>Book Appointment</h2>
+<form (ngSubmit)="onSubmit()">
+  <label>Hospital ID:</label>
+  <input type="text" [(ngModel)]="appointmentData.hospitalId" name="hospitalId" required />
+
+  <label>Vaccine ID:</label>
+  <input type="text" [(ngModel)]="appointmentData.vaccineId" name="vaccineId" required />
+
+  <label>Date:</label>
+  <input type="date" [(ngModel)]="appointmentData.date" name="date" required />
+
+  <label>Time:</label>
+  <input type="time" [(ngModel)]="appointmentData.time" name="time" required />
+
+  <button type="submit">Book</button>
+</form>
+
+<p *ngIf="successMessage">{{ successMessage }}</p>
