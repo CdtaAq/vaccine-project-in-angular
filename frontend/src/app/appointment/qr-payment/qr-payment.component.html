@@ -1,0 +1,8 @@
+<h2>QR Payment</h2>
+<p>Amount to Pay: {{ amount }} USD</p>
+<button (click)="generateQRCode()">Generate QR</button>
+
+<div *ngIf="qrCodeUrl">
+  <img [src]="qrCodeUrl" alt="QR Code" />
+  <p>Scan this QR code to complete your payment</p>
+</div>
