@@ -13,18 +13,30 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
+  redis:
+    image: redis:7.2
+    container_name: vaccination-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
   app:
     build: .
     image: vaccination-system:latest
     container_name: vaccination-app
     depends_on:
       - db
+      - redis
     ports:
       - "8080:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/vaccinationdb
       SPRING_DATASOURCE_USERNAME: vaccuser
       SPRING_DATASOURCE_PASSWORD: vaccpass
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
 
 volumes:
   mysql_data:
+  redis_data:
