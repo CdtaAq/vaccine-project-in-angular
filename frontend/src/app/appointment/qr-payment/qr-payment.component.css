@@ -1,0 +1,10 @@
+mat-card {
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.qr-container {
+  margin-top: 20px;
+}
