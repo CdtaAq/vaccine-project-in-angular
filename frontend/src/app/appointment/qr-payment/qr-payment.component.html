@@ -1,8 +1,14 @@
-<h2>QR Payment</h2>
-<p>Amount to Pay: {{ amount }} USD</p>
-<button (click)="generateQRCode()">Generate QR</button>
+<mat-card>
+  <h2>QR Payment</h2>
+  <p>Amount to Pay: {{ amount }} USD</p>
 
-<div *ngIf="qrCodeUrl">
-  <img [src]="qrCodeUrl" alt="QR Code" />
-  <p>Scan this QR code to complete your payment</p>
-</div>
+  <button mat-raised-button color="accent" (click)="generateQRCode()">
+    <mat-icon>qr_code</mat-icon>
+    Generate QR
+  </button>
+
+  <div *ngIf="qrCodeUrl" class="qr-container">
+    <img [src]="qrCodeUrl" alt="QR Code" />
+    <p>Scan this QR code to complete your payment</p>
+  </div>
+</mat-card>
