@@ -1,0 +1,27 @@
+<div class="user-dashboard">
+  <h2>User Dashboard</h2>
+
+  <!-- Booking List -->
+  <section class="bookings">
+    <h3>Your Bookings</h3>
+    <ul>
+      <li *ngFor="let booking of bookings">
+        {{ booking.date }} - {{ booking.vaccine }}
+        <button (click)="cancelBooking(booking.id)">Cancel</button>
+        <a [href]="booking.qrUrl" target="_blank">Download QR</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Chatbox -->
+  <section class="chatbox">
+    <h3>Support Chat</h3>
+    <div class="messages">
+      <div *ngFor="let msg of messages">
+        <strong>{{ msg.user }}:</strong> {{ msg.text }}
+      </div>
+    </div>
+    <input [(ngModel)]="newMessage" placeholder="Ask something..." />
+    <button (click)="sendMessage()">Send</button>
+  </section>
+</div>
