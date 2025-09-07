@@ -1,18 +1,39 @@
 <h2>Book Appointment</h2>
-<form (ngSubmit)="onSubmit()">
+<form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+
   <label>Hospital ID:</label>
-  <input type="text" [(ngModel)]="appointmentData.hospitalId" name="hospitalId" required />
+  <input formControlName="hospitalId" type="text" />
+  <div *ngIf="appointmentForm.get('hospitalId')?.invalid && appointmentForm.get('hospitalId')?.touched">
+    Hospital ID is required
+  </div>
 
   <label>Vaccine ID:</label>
-  <input type="text" [(ngModel)]="appointmentData.vaccineId" name="vaccineId" required />
+  <input formControlName="vaccineId" type="text" />
+  <div *ngIf="appointmentForm.get('vaccineId')?.invalid && appointmentForm.get('vaccineId')?.touched">
+    Vaccine ID is required
+  </div>
 
   <label>Date:</label>
-  <input type="date" [(ngModel)]="appointmentData.date" name="date" required />
+  <input formControlName="date" type="date" />
 
   <label>Time:</label>
-  <input type="time" [(ngModel)]="appointmentData.time" name="time" required />
+  <input formControlName="time" type="time" />
 
-  <button type="submit">Book</button>
+  <label>Age:</label>
+  <input formControlName="age" type="number" />
+  <div *ngIf="appointmentForm.get('age')?.errors?.['min']">
+    Must be 18 or older
+  </div>
+
+  <label>Email:</label>
+  <input formControlName="email" type="email" />
+  <div *ngIf="appointmentForm.get('email')?.errors?.['email']">
+    Must be a valid email
+  </div>
+
+  <button type="submit" [disabled]="appointmentForm.invalid">Book</button>
 </form>
 
-<p *ngIf="successMessage">{{ successMessage }}</p>
+<!-- Success & Error Messages -->
+<p *ngIf="successMessage" style="color: green;">{{ successMessage }}</p>
+<p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
