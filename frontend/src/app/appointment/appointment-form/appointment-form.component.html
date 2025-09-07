@@ -1,39 +1,53 @@
-<h2>Book Appointment</h2>
-<form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+<mat-card>
+  <h2>Book Appointment</h2>
 
-  <label>Hospital ID:</label>
-  <input formControlName="hospitalId" type="text" />
-  <div *ngIf="appointmentForm.get('hospitalId')?.invalid && appointmentForm.get('hospitalId')?.touched">
-    Hospital ID is required
-  </div>
+  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Hospital ID</mat-label>
+      <input matInput formControlName="hospitalId" required />
+      <mat-error *ngIf="appointmentForm.get('hospitalId')?.hasError('required')">
+        Hospital ID is required
+      </mat-error>
+    </mat-form-field>
 
-  <label>Vaccine ID:</label>
-  <input formControlName="vaccineId" type="text" />
-  <div *ngIf="appointmentForm.get('vaccineId')?.invalid && appointmentForm.get('vaccineId')?.touched">
-    Vaccine ID is required
-  </div>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Vaccine ID</mat-label>
+      <input matInput formControlName="vaccineId" required />
+      <mat-error *ngIf="appointmentForm.get('vaccineId')?.hasError('required')">
+        Vaccine ID is required
+      </mat-error>
+    </mat-form-field>
 
-  <label>Date:</label>
-  <input formControlName="date" type="date" />
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" required />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 
-  <label>Time:</label>
-  <input formControlName="time" type="time" />
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Time</mat-label>
+      <input matInput type="time" formControlName="time" required />
+    </mat-form-field>
 
-  <label>Age:</label>
-  <input formControlName="age" type="number" />
-  <div *ngIf="appointmentForm.get('age')?.errors?.['min']">
-    Must be 18 or older
-  </div>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Age</mat-label>
+      <input matInput type="number" formControlName="age" />
+      <mat-error *ngIf="appointmentForm.get('age')?.hasError('min')">
+        Must be at least 18 years old
+      </mat-error>
+    </mat-form-field>
 
-  <label>Email:</label>
-  <input formControlName="email" type="email" />
-  <div *ngIf="appointmentForm.get('email')?.errors?.['email']">
-    Must be a valid email
-  </div>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" />
+      <mat-error *ngIf="appointmentForm.get('email')?.hasError('email')">
+        Enter a valid email
+      </mat-error>
+    </mat-form-field>
 
-  <button type="submit" [disabled]="appointmentForm.invalid">Book</button>
-</form>
-
-<!-- Success & Error Messages -->
-<p *ngIf="successMessage" style="color: green;">{{ successMessage }}</p>
-<p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+    <button mat-raised-button color="primary" type="submit" [disabled]="appointmentForm.invalid">
+      Book Appointment
+    </button>
+  </form>
+</mat-card>
