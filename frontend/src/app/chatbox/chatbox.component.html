@@ -1,0 +1,15 @@
+<div class="chatbox">
+  <div class="chatbox-header">Support Chat</div>
+  <div class="chatbox-body">
+    <div *ngFor="let m of messages">
+      <div [ngClass]="{'msg-user': m.sender==='user', 'msg-other': m.sender!=='user'}" class="msg">
+        <small>{{ m.sender }} - {{ m.ts ? (m.ts | date:'short') : '' }}</small>
+        <div>{{ m.text }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="chatbox-input">
+    <input type="text" [(ngModel)]="messageText" placeholder="Type a message..." />
+    <button (click)="send()" class="btn">Send</button>
+  </div>
+</div>
