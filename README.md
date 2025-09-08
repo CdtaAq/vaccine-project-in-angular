@@ -16,13 +16,3 @@
 4. Run backend: `npm start` (or `./mvnw spring-boot:run`)
 5. Run frontend: `ng serve --open`
 
-## API Documentation
-- **GET /reports** - Fetch all reports
-  - Response:
-    ```json
-    [
-      { "category": "Sales", "value": 100 },
-      { "category": "Revenue", "value": 80 }
-    ]
-    ```
-![Reports Chart](./screenshots/reports-chart.png)
